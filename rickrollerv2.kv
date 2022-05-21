@@ -61,6 +61,25 @@
         FloatLayout:
             size: root.width, root.height
 
+            Label:
+                text: 'By Boomexe'
+                size_hint: 0.2, 0.08
+                font_size: 24
+                pos_hint: {'top':1, 'left':1}
+
+            Label:
+                text: root.current_version()
+                size_hint: 0.2, 0.08
+                font_size: 24
+                pos_hint: {'top':0.8, 'left':1}
+            
+            Button:
+                text: 'Click here to visit the Github Repository'
+                pos_hint: {'top':0.5, 'left':1}
+                size_hint: 0.35, 0.1
+                on_release: root.open_repository()
+                
+
 <P>:
     Label:
         text: 'Permanently deleted save.'

@@ -8,6 +8,9 @@ from kivy.clock import Clock
 from kivy.uix.popup import Popup
 import os
 import database
+import webbrowser
+
+app_version = '0.0.1'
 
 Config.set('input', 'mouse', 'mouse,multitouch_on_demand')
 Config.set('kivy', 'show_fps' , True)
@@ -56,6 +59,12 @@ class MainWidget(TabbedPanel):
         load_data()
         self.rick_rolls_text.text = self.update_text('Rick Rolls', 'rickrolls')
         show_popup('Permanently deleted save.')
+    
+    def current_version(self):
+        return f'Version: {app_version}'
+    
+    def open_repository(self):
+        webbrowser.open('https://github.com/Boomexe/RickRollerV2')
 
 class P(FloatLayout):
     pass
