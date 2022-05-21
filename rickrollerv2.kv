@@ -1,0 +1,68 @@
+#:kivy 2.1.0
+
+<Label>:
+    size_hint: 0.2, 0.3
+    font_size: 16
+
+<MainWidget>:
+
+    rick_utton: rick_button
+    rick_rolls_text: rick_rolls_text
+
+    do_default_tab: False
+    color: 1, 0, 0, 1
+    tab_height: 25
+    # minimum_height: 500
+    # minimum_width: 500
+
+    TabbedPanelItem:
+        text: 'Game'
+        FloatLayout:
+            size: root.width, root.height
+            Label:
+                text: 'Rick Game V2'
+                pos_hint: {'center_x':0.5, 'top':1.1}
+                font_size: 32
+            
+            Label:
+                id: rick_rolls_text
+                text: root.update_text('Rick Rolls', 'rickrolls')
+                pos_hint: {'center_x': 0.2, 'top':0.9}
+                font_size: 24
+
+            Button:
+                id: rick_button
+                size_hint: 0.35, 0.6
+                pos_hint: {'center_x':0.2, 'center_y':0.4}
+                background_color: 0, 0, 0, 0
+                on_press: root.rick_button_pressed()
+                Image:
+                    source: 'assets/images/rick_face.png'
+                    size: self.texture_size
+                    center_x: self.parent.center_x
+                    center_y: self.parent.center_y
+    
+    TabbedPanelItem:
+        text: 'Settings'
+        FloatLayout:
+            size: root.width, root.height
+            padding: 0.1
+
+            Button:
+                text: 'Reset Data (IRREVERSIBLE)'
+                size_hint: 0.25, 0.05
+                pos_hint: {'x':0, 'top':1}
+                background_color: 1, 0, 0, 1
+                on_release: root.delete_forever_popup()
+    
+    TabbedPanelItem:
+        text: 'About'
+
+        FloatLayout:
+            size: root.width, root.height
+
+<P>:
+    Label:
+        text: 'Permanently deleted save.'
+        pos_hint: {'top':1, 'center_x':0.5}
+        size_hint: 0.4, 0.1
